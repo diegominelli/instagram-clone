@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AcessoComponent } from './acesso/acesso.component';
@@ -13,12 +14,10 @@ import { CadastroComponent } from './acesso/cadastro/cadastro.component';
     AcessoComponent,
     BannerComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
