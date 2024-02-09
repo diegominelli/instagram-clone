@@ -31,11 +31,11 @@ import { Imagem } from './imagem.model';
   ],
 })
 export class BannerComponent implements OnInit {
-  public estado: string = 'escondido';
+  public estado: string = 'visivel';
 
   public imagens: Imagem[] = [
     {
-      estado: 'escondido',
+      estado: 'visivel',
       url: '/assets/img_1.png',
     },
     {
@@ -59,10 +59,22 @@ export class BannerComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.imagens);
+    setTimeout(() => this.logicaRotacao(), 3000);
   }
 
-  public toggleEstado(): void {
-    this.estado = this.estado === 'visivel' ? 'escondido' : 'visivel';
+  public logicaRotacao(): void {
+    let idx: number = 0;
+
+    for (let i: number = 0; i <= 4; i++) {
+      if (this.imagens[i].estado === 'visivel') {
+        this.imagens[i].estado = 'escondido';
+        idx = i === 4 ? 0 : i + 1;
+        break;
+      }
+    }
+
+    this.imagens[idx].estado = 'visivel';
+
+    setTimeout(() => this.logicaRotacao(), 3000);
   }
 }
