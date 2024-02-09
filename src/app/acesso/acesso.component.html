@@ -12,7 +12,7 @@
         class="col-sm-6 d-flex justify-content-start"
         [@animacao-painel]="estadoPainel"
       >
-        <app-cadastro></app-cadastro>
+        <app-cadastro (exibirPainel)="exibirPainel($event)"></app-cadastro>
       </div>
     </div>
 

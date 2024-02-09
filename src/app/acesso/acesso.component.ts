@@ -33,6 +33,7 @@ export class AcessoComponent implements OnInit {
   public estadoPainel: string = 'criado';
 
   public cadastro: boolean = false;
+  public login: boolean = false;
 
   constructor() {}
 
