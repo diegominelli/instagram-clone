@@ -9,6 +9,7 @@ export class Autenticacao {
       .auth()
       .createUserWithEmailAndPassword(usuario.email, usuario.senha)
       .then((resposta: any) => {
+        usuario.senha;
         firebase
           .database()
           .ref(`usuario_detalhe/${btoa(usuario.email)}`)
