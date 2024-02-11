@@ -11,6 +11,8 @@ import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { Autenticacao } from './autenticacao.service';
 import { HomeComponent } from './home/home.component';
 import { PublicacoesComponent } from './home/publicacoes/publicacoes.component';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,12 @@ import { PublicacoesComponent } from './home/publicacoes/publicacoes.component';
     HomeComponent,
     PublicacoesComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(ROUTES),
+  ],
   providers: [Autenticacao],
   bootstrap: [AppComponent],
 })
