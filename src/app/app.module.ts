@@ -14,6 +14,7 @@ import { PublicacoesComponent } from './home/publicacoes/publicacoes.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { AutenticacaoGuard } from './autenticacao-guard.service';
+import { IncluirPublicacaoComponent } from './home/incluir-publicacao/incluir-publicacao.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AutenticacaoGuard } from './autenticacao-guard.service';
     CadastroComponent,
     HomeComponent,
     PublicacoesComponent,
+    IncluirPublicacaoComponent,
   ],
   imports: [
     BrowserModule,
