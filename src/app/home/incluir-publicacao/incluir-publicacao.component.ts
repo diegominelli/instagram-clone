@@ -2,6 +2,7 @@ import { Progresso } from './../../progresso.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as firebase from 'firebase';
+import { Subject, interval, takeUntil } from 'rxjs';
 
 import { Bd } from 'src/app/bd.service';
 
@@ -33,8 +34,19 @@ export class IncluirPublicacaoComponent implements OnInit {
       imagem: this.imagem[0],
     });
 
-    console.log(this.progresso.status);
-    console.log(this.progresso.estado);
+    let acompanhamentoUpload = interval(1500);
+
+    let continua = new Subject();
+    continua.next(true);
+
+    acompanhamentoUpload.pipe(takeUntil(continua)).subscribe(() => {
+      console.log(this.progresso.status);
+      console.log(this.progresso.estado);
+
+      if (this.progresso.status === 'concluido') {
+        continua.next(false);
+      }
+    });
   }
 
   public preparaImagemUpload(event: Event): void {
