@@ -1,3 +1,4 @@
+import { Progresso } from './../../progresso.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as firebase from 'firebase';
@@ -17,7 +18,7 @@ export class IncluirPublicacaoComponent implements OnInit {
     titulo: new FormControl(null),
   });
 
-  constructor(private bd: Bd) {}
+  constructor(private bd: Bd, private progresso: Progresso) {}
 
   ngOnInit(): void {
     firebase.auth().onAuthStateChanged((user) => {
@@ -31,6 +32,9 @@ export class IncluirPublicacaoComponent implements OnInit {
       titulo: this.formulario.value.titulo,
       imagem: this.imagem[0],
     });
+
+    console.log(this.progresso.status);
+    console.log(this.progresso.estado);
   }
 
   public preparaImagemUpload(event: Event): void {
