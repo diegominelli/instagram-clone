@@ -46,7 +46,25 @@ export class Bd {
       .ref(`publicacoes/${btoa(emailUsuario)}`)
       .once('value')
       .then((snapshot: any) => {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
+
+        let publicacoes: Array<any> = [];
+
+        snapshot.forEach((childSnapshot: any) => {
+          let publicacao = childSnapshot.val();
+
+          firebase
+            .storage()
+            .ref()
+            .child(`imagens/${childSnapshot.key}`)
+            .getDownloadURL()
+            .then((url: string) => {
+              publicacao.url_imagem = url;
+              publicacoes.push(publicacao);
+            });
+        });
+
+        console.log(publicacoes);
       });
   }
 }
