@@ -30,4 +30,8 @@ export class IncluirPublicacaoComponent implements OnInit {
       titulo: this.formulario.value.titulo,
     });
   }
+
+  public preparaImagemUpload(event: Event): void {
+    console.log((<HTMLInputElement>event.target).files);
+  }
 }
