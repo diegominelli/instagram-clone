@@ -7,8 +7,6 @@ export class Bd {
   constructor(private progresso: Progresso) {}
 
   public publicar(publicacao: any): void {
-    console.log(publicacao);
-
     firebase
       .database()
       .ref(`publicacoes/${btoa(publicacao.email)}`)
@@ -45,9 +43,10 @@ export class Bd {
       firebase
         .database()
         .ref(`publicacoes/${btoa(emailUsuario)}`)
+        .orderByKey()
         .once('value')
         .then((snapshot: any) => {
-          // console.log(snapshot.val());
+          console.log(snapshot.val());
 
           let publicacoes: Array<any> = [];
 
